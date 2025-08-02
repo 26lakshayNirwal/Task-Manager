@@ -17,7 +17,10 @@ if (!fs.existsSync(uploadsDir)) {
 }
 
 // ✅ Middleware
-app.use(cors());
+app.use(cors({
+  origin: 'https://task-manager-frontend-dqli.onrender.com', // ✅ your frontend URL
+  credentials: true // if using cookies or authorization headers
+}));
 app.use(express.json());
 app.use('/uploads', express.static(uploadsDir)); // Serve uploaded files
 
